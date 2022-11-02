@@ -11,7 +11,7 @@ Note that it:
 
 ## Installation
 
-Use your favourite plugin manager. I use [vim-plug](
-```vimscript
-Plug 'junegunn/vim-easy-align'
+Use your favourite plugin manager. I use [vim-plug](https://github.com/junegunn/vim-plug).
+```vim
+Plug 'kiyoon/vim-screenpaste'
 ```
