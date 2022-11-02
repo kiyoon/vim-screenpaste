@@ -119,21 +119,21 @@ if $STY
 	" 2. yank using @s register.
 	" 3. detect if vim or ipython is running
 	" 4. execute screen command.
-	nnoremap <silent> - "syy:<C-U>call ScreenPaste(v:count, @s, 1, DetectRunningProgram(v:count))<CR>
-	vnoremap <silent> - "sy:<C-U>call ScreenPaste(v:count, @s, 1, DetectRunningProgram(v:count))<CR>
+	nnoremap <silent> - :<C-U>let pasteWindow=v:count<CR>"syy:call ScreenPaste(pasteWindow, @s, 1, DetectRunningProgram(pasteWindow))<CR>
+	vnoremap <silent> - :<C-U>let pasteWindow=v:count<CR>gv"sy:call ScreenPaste(pasteWindow, @s, 1, DetectRunningProgram(pasteWindow))<CR>
 	" pasting to window 0 is not 0; but \;. Explicit separate command because v:count is 0 for no count, and also 0 is a command that moves the cursor.
 	nnoremap <silent> <leader>- "syy:<C-U>call ScreenPaste('-console', @s, 1, DetectRunningProgram('-console'))<CR>
 	vnoremap <silent> <leader>- "sy:<C-U>call ScreenPaste('-console', @s, 1, DetectRunningProgram('-console'))<CR>
 	"""""""""""""""
 	" Same thing but <num>_ to paste without detecting running programs and without the return at the end.
-	nnoremap <silent> _ "syy:<C-U>call ScreenPaste(v:count, @s, 0, 'nodetect')<CR>
-	vnoremap <silent> _ "sy:<C-U>call ScreenPaste(v:count, @s, 0, 'nodetect')<CR>
+	nnoremap <silent> _ :<C-U>let pasteWindow=v:count<CR>"syy:call ScreenPaste(pasteWindow, @s, 0, 'nodetect')<CR>
+	vnoremap <silent> _ :<C-U>let pasteWindow=v:count<CR>gv"sy:call ScreenPaste(pasteWindow, @s, 0, 'nodetect')<CR>
 	nnoremap <silent> <leader>_ "syy:<C-U>call ScreenPaste('-console', @s, 0, 'nodetect')<CR>
 	vnoremap <silent> <leader>_ "sy:<C-U>call ScreenPaste('-console', @s, 0, 'nodetect')<CR>
 
 	"""""""""""""""
 	" Copy to Screen buffer
-	nnoremap <silent> <C-_> "syy:<C-U>call ScreenAddBuffer(@s)<CR>
-	vnoremap <silent> <C-_> "sy:<C-U>call ScreenAddBuffer(@s)<CR>
+	nnoremap <silent> <C-_> :<C-U>let pasteWindow=v:count<CR>"syy:call ScreenAddBuffer(@s)<CR>
+	vnoremap <silent> <C-_> :<C-U>let pasteWindow=v:count<CR>gv"sy:call ScreenAddBuffer(@s)<CR>
 	""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 endif
