@@ -25,13 +25,15 @@ if $STY
 		" Returns: 'vim', 'ipython', or 'others'
 		"
 		let runningProgram = system('bash ''' . g:plugin_dir . '/scripts/display_screen_window_commands.sh'' | grep ''^' . a:windowIdx . ' '' | awk ''{for(i=2;i<=NF;++i)printf $i" "}'' ')
-		let programName = fnamemodify(split(runningProgram, ' ')[0], ':t')
 		if empty(runningProgram)
 			return '-bash'
-		elseif programName ==# 'vi' || programName ==# 'vim' || programName ==# 'nvim'
-			return 'vim'
-		elseif stridx(runningProgram, '/ipython ') > 0
-			return 'ipython'
+		else
+			let programName = fnamemodify(split(runningProgram, ' ')[0], ':t')
+			if programName ==# 'vi' || programName ==# 'vim' || programName ==# 'nvim'
+				return 'vim'
+			elseif stridx(runningProgram, '/ipython ') > 0
+				return 'ipython'
+			endif
 		endif
 		return 'others'
 	endfunction
