@@ -9,6 +9,14 @@ Vim plugin that lets you copy and paste to a different GNU screen window.
 Note that it:
 - Uses many system calls. Tested mainly on Ubuntu and Windows WSL.
 
+
+## Features
+- `[num]-`: Paste line or selection to Screen window \<num\>. If [num] is not specified, paste to window 0. Detect if Vim or iPython is running on the window, and paste accordingly.
+- `\-`: Paste to window named -console.
+- `[num]_`, `\_`: Same as `-` but does not detect program nor add newline at the end.
+- `<C-_>`: Copy to Screen paste buffer. You can paste it with \<C-a\> \] anywhere.
+
+
 ## Installation
 
 Use your favourite plugin manager. I use [vim-plug](https://github.com/junegunn/vim-plug).
