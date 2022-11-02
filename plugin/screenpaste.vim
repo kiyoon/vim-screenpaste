@@ -106,6 +106,7 @@ if $STY
 			endif
 		endif
 		echom 'Paste to Screen window ' . a:pasteWindow . ' (' . a:pasteTo . ')'
+		redraw
 		if a:pasteTo ==? 'vim'
 			" ^[ => Ctrl+[ = ESC
 			" Exit paste mode and force redraw (need to redraw if pasting to same screen)
