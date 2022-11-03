@@ -43,7 +43,9 @@ if $STY
 		" Paste using C-a ]
 		"
 		let tempname = tempname()
-		call writefile(split(a:content, "\n"), tempname, 'b')
+		
+		" When splitting, do not strip the empty lines. (keepempty=1)
+		call writefile(split(a:content, "\n", 1), tempname, 'b')
 
 		" msgwait: Suppress messages like 'Slurped 300 characters to buffer'
 		let screenMsgWaitCommand = 'screen -X msgwait 0'
@@ -136,7 +138,7 @@ if $STY
 
 	"""""""""""""""
 	" Copy to Screen buffer
-	nnoremap <silent> <C-_> :<C-U>let pasteWindow=v:count<CR>"syy:call ScreenAddBuffer(@s)<CR>
-	vnoremap <silent> <C-_> :<C-U>let pasteWindow=v:count<CR>gv"sy:call ScreenAddBuffer(@s)<CR>
+	nnoremap <silent> <C-_> "syy:call ScreenAddBuffer(@s)<CR>
+	vnoremap <silent> <C-_> "sy:call ScreenAddBuffer(@s)<CR>
 	""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 endif
